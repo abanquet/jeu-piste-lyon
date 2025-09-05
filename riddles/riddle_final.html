@@ -8,7 +8,8 @@
 </head>
 <body>
     <div id="password-protect" style="text-align: center; margin-top: 20%;">
-        <h2></h2>
+        <h2>Fresque des Lyonnais</h2>
+        
         <p>
             <input type="text" maxlength="1" class="password-cell" id="cell-1" data-length="1">
             <input type="text" maxlength="2" class="password-cell" id="cell-2" data-length="2">
@@ -86,14 +87,6 @@
             }
         });
 
-        // Automatically move focus to the next cell
-        passwordCells.forEach((cell, index) => {
-            cell.addEventListener('input', () => {
-                if (cell.value.length === 1 && index < passwordCells.length - 1) {
-                    passwordCells[index + 1].focus();
-                }
-            });
-        });
     </script>
 </body>
 </html>
