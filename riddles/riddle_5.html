@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigme</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="../logo_lyon_express.png" alt="Lyon Express Logo">
+        <nav>
+            <p><a href="riddle_5.html">Français</a><p>
+            <p><a href="riddle_5.html">English</a></p>
+        </nav>
+    </header>
+    <main>
+        <section id="fr" class="riddle">
+            <h2>Lieu/Personnage</h2>
+            <p>
+                J’ai passé ma vie à chercher ce qu’on ne voyait pas : le courant, les champs, les forces invisibles.<br>
+                Je n’ai rien inventé que l’on puisse toucher, mais j’ai posé des lois que l’on suit encore,<br>
+                Aujourd’hui, chaque fois que tu mesures une intensité, c’est mon nom que tu prononces.<br>
+                C’est ma statue que tu dois retrouver.
+            </p>
+        </section>
+        <section id="en" style="display:none;" class="riddle">
+            <h2>Place/Character</h2>
+            <p>
+                I spent my life searching for what could not be seen: current, fields, invisible forces.<br>
+                I invented nothing tangible, but I established laws that are still followed today.<br>
+                Every time you measure an intensity, it’s my name you pronounce.<br>
+                It’s my statue you must find.
+            </p>
+        </section>
+        </br>
+        <div style="text-align: center;">
+            <img src="../img/riddle_5.png" style="max-width: 350px;" alt="Riddle 5 Hint">
+        </div>
+        <br>
+    </main>
+
+    
+    <script>
+        const langSwitch = document.querySelectorAll('nav a');
+        langSwitch.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('fr').style.display = link.textContent === 'Français' ? 'block' : 'none';
+                document.getElementById('en').style.display = link.textContent === 'English' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

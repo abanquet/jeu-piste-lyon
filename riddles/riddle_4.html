@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="../logo_lyon_express.png" alt="Lyon Express Logo">
+        <nav>
+            <p><a href="riddle_4.html">Français</a><p>
+            <p><a href="riddle_4.html">English</a></p>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="fr" class="riddle">
+            <h2>Lieu</h2>
+            <p>
+                Je suis un vide immense au centre de la ville,<br>
+                Mais tous les chemins semblent y converger.<br>
+                Des pavés, du vent, des pas, des rendez-vous manqués.<br>
+                Et au milieu, un cavalier qui regarde droit devant.<br>
+                Je ne suis ni place royale, ni place du marché,<br>
+                Mais je suis le point zéro de ceux qui partent ou reviennent.
+            </p>
+            <br>
+            <h2>Personnage</h2>
+            <p>
+                Mais un autre veille, discret, tout près d'ici.<br>
+                Pas de couronne, pas d’épée, juste un livre et un enfant.<br>
+                Le sable et les étoiles plutôt que le marbre et l’or.<br>
+                Cherchez celui qui a volé plus haut que les rois,<br>
+                Et suivez le regard du Petit Prince.
+            </p>
+        </section>
+        <section id="en" style="display:none;" class="riddle">
+            <h2>Place</h2>
+            <p>
+                I am a vast emptiness in the center of the city,<br>
+                But all roads seem to converge here.<br>
+                Cobblestones, wind, footsteps, missed meetings.<br>
+                And in the middle, a rider looking straight ahead.<br>
+                I am neither a royal square nor a market square,<br>
+                But I am the zero point for those who leave or return.
+            </p>
+            <br>
+            <h2>Character</h2>
+            <p>
+                But another watches, discreetly, nearby.<br>
+                No crown, no sword, just a book and a child.<br>
+                Sand and stars rather than marble and gold.<br>
+                Look for the one who flew higher than kings,<br>
+                And follow the gaze of the Little Prince.
+            </p>
+        </section>
+        </br>
+        <div style="text-align: center;">
+            <img src="../img/riddle_4.png" style="max-width: 350px;" alt="Riddle 1 Hint">
+        </div>
+        <br>
+    </main>
+
+    <script>
+        const langSwitch = document.querySelectorAll('nav a');
+        langSwitch.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('fr').style.display = link.textContent === 'Français' ? 'block' : 'none';
+                document.getElementById('en').style.display = link.textContent === 'English' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

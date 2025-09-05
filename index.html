@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Piste Historique à Lyon</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo_lyon_express.png" alt="Lyon Express Logo">
+        <nav>
+            <p>
+                <p><a href="index.html">Français</a></p>
+                <p><a href="index_en.html">English</a></p>
+            </p>
+        </nav>
+    </header>
+    <main>
+        <section id="fr">
+            <p>Préparez-vous à partir à la découverte de Lyon! Votre mission: résoudre des énigmes pour vous rendre dans les lieux emblématiques de la ville et partir sur les traces des personnages ayant marqué l'histoire de la ville.</p>
+            
+            <h2>Règles</h2>
+            <p>Le jeu se fait par équipes de 4 à 5 personnes. Vous recevrez un QR codes de départ avec une première énigme</p>
+            <p>À chaque étape, vous devrez :</p>
+            <ul>
+                <li>Résoudre une énigme pour deviner un lieu et un personnage ayant marqué l'histoire de la ville</li>
+                <li>Vous rendre sur place</li>
+                <li>Scanner un nouveau QR code qui vous délivrera la suite</li>
+            </ul>
+            <p>Retenez bien la liste des personnages car ça vous sera utile pour l'étape finale!</p>
+
+            <h2>Objectif</h2>
+            <p>Vous devez être la première équipe à résoudre toutes les énigmes et à me rejoindre sur le lieu final!</p>
+        </section>
+        <section id="en" style="display:none;">
+            <p>Get ready to explore Lyon! Your mission: solve riddles to find iconic spots in the city and follow the footsteps of historical figures who shaped its history.</p>    
+            <h2>Rules</h2>
+            <p>The game is played in teams of 4 to 5 people. You will receive a starting QR code with the first riddle.</p>
+            <p>At each step, you will need to:</p>
+            <ul>
+                <li>Solve a riddle to guess a location and a historical figure</li>
+                <li>Go to that location</li>
+                <li>Scan a new QR code that will give you the next clue</li>
+            </ul>
+            <p>Remember the list of historical figures as it will be useful for the final step!</p>
+            <h2>Goal</h2>
+            <p>You need to be the first team to solve all the riddles and reach me at the final location!</p>
+        </section>  
+        
+    </main>
+    <script>
+        const langSwitch = document.querySelectorAll('nav a');
+        langSwitch.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('fr').style.display = link.textContent === 'Français' ? 'block' : 'none';
+                document.getElementById('en').style.display = link.textContent === 'English' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
