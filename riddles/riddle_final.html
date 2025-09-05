@@ -20,12 +20,13 @@
             <input type="text" maxlength="2" class="password-cell" id="cell-4" data-length="2">
             <input type="text" maxlength="2" class="password-cell" id="cell-5" data-length="2">
         </p>
-        <!-- <p>
-            <input type="text" id="password-input" placeholder="Mysterious character">
-        </p> -->
+        <p>
+            <input type="text" id="mysteriousCharacter-input" placeholder="Mysterious character">
+        </p>
         
         <button id="password-submit">Submit</button>
-        <p id="error-message" style="color: red; display: none;">Incorrect password. Try again.</p>
+        <p id="error-message-password" style="color: red; display: none;">Incorrect password. Try again.</p>
+        <p id="error-message-mysteriousCharacter" style="color: red; display: none;">Incorrect name for the mysterious character. Try again.</p>
     </div>
 
     <div id="content" style="display: none;">
@@ -69,6 +70,7 @@
         });
 
         const password = ["9", "22", "14", "12", "28"]; 
+        const mysteriousCharacter = "Jean Moulin";
         const passwordCells = [
             document.getElementById('cell-1'),
             document.getElementById('cell-2'),
@@ -76,19 +78,26 @@
             document.getElementById('cell-4'),
             document.getElementById('cell-5'),
         ];
+        const mysteriousCharacterInput = document.getElementById('mysteriousCharacter-input');
         const passwordSubmit = document.getElementById('password-submit');
-        const errorMessage = document.getElementById('error-message');
+        const errorMessage = document.getElementById('error-message-password');
+        const errorMessageMysteriousCharacter = document.getElementById('error-message-mysteriousCharacter');
         const content = document.getElementById('content');
         const passwordProtect = document.getElementById('password-protect');
 
         passwordSubmit.addEventListener('click', () => {
             const enteredPassword = passwordCells.map(cell => cell.value);
+            const enteredMysteriousCharacter = mysteriousCharacterInput.value.trim();
+            if (enteredMysteriousCharacter !== mysteriousCharacter) {
+                errorMessageMysteriousCharacter.style.display = 'block';
+            }
             const isPasswordCorrect = enteredPassword.every((value, index) => value === password[index]);
-            if (isPasswordCorrect) {
+            if (!isPasswordCorrect) {
+                errorMessage.style.display = 'block';
+            }
+            if ((isPasswordCorrect) && (enteredMysteriousCharacter === mysteriousCharacter)) {
                 passwordProtect.style.display = 'none';
                 content.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'block';
             }
         });
 
