@@ -9,13 +9,6 @@ The project consists of the following files and directories:
 - **index.html**: The homepage of the website, containing the rules of the treasure hunt game and links to each riddle page.
   
 - **riddles/**: A directory containing individual HTML files for each riddle:
-  - **amphitheatre.html**: Riddle related to the Amphithéâtre des Trois Gaules.
-  - **cinema-museum.html**: Riddle related to the Musée du Cinéma et de la Miniature.
-  - **traboules.html**: Riddle related to the Traboules du Vieux Lyon.
-  - **bellecour.html**: Combined riddle for Antoine de Saint-Exupéry at place Bellecour.
-  - **ampere.html**: Combined riddle for André-Marie Ampère at place Ampère.
-  - **bocuse.html**: Combined riddle for Paul Bocuse at Brasserie Le Nord.
-  - **lyonnais-fresco.html**: Final riddle related to the Fresque des Lyonnais.
 
 - **css/**: A directory containing styles for the website.
   - **styles.css**: Contains layout, typography, and responsive design styles.
