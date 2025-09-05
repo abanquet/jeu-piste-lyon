@@ -88,3 +88,11 @@ main {
 footer p {
     margin: 0;
 }
+
+.password-cell {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 0.2rem;
+}

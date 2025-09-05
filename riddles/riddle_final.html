@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div id="password-protect" style="text-align: center; margin-top: 20%;">
+        <h2></h2>
+        <p>
+            <input type="text" maxlength="1" class="password-cell" id="cell-1" data-length="1">
+            <input type="text" maxlength="2" class="password-cell" id="cell-2" data-length="2">
+            <input type="text" maxlength="2" class="password-cell" id="cell-3" data-length="2">
+            <input type="text" maxlength="2" class="password-cell" id="cell-4" data-length="2">
+            <input type="text" maxlength="2" class="password-cell" id="cell-5" data-length="2">
+        </p>
+        <!-- <p>
+            <input type="text" id="password-input" placeholder="Mysterious character">
+        </p> -->
+        
+        <button id="password-submit">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Incorrect password. Try again.</p>
+    </div>
+
+    <div id="content" style="display: none;">
+    <!-- <div id="content" > -->
+        <header>
+            <img src="../logo_lyon_express.png" alt="Lyon Express Logo">
+            <nav>
+                <p><a href="">Français</a><p>
+                <p><a href="">English</a></p>
+            </nav>
+        </header>
+        <main>
+            <section id="fr" class="riddle">
+                <h2>Félicitations</h2>
+                <p>
+                    Vous avez résolu toutes les énigmes !</br>
+                    
+                </p>
+            </section>
+            <section id="en" style="display:none;" class="riddle">
+                <h2>Congratulations</h2>
+                <p>
+                    You have solved all the riddles!</br>
+                </p>
+            </section>
+            </br>
+            <br>
+        </main>
+    </div>
+
+    <script>
+        const langSwitch = document.querySelectorAll('nav a');
+        langSwitch.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('fr').style.display = link.textContent === 'Français' ? 'block' : 'none';
+                document.getElementById('en').style.display = link.textContent === 'English' ? 'block' : 'none';
+            });
+        });
+
+        const password = ["9", "22", "14", "12", "28"]; 
+        const passwordCells = [
+            document.getElementById('cell-1'),
+            document.getElementById('cell-2'),
+            document.getElementById('cell-3'),
+            document.getElementById('cell-4'),
+            document.getElementById('cell-5'),
+        ];
+        const passwordSubmit = document.getElementById('password-submit');
+        const errorMessage = document.getElementById('error-message');
+        const content = document.getElementById('content');
+        const passwordProtect = document.getElementById('password-protect');
+
+        passwordSubmit.addEventListener('click', () => {
+            const enteredPassword = passwordCells.map(cell => cell.value);
+            const isPasswordCorrect = enteredPassword.every((value, index) => value === password[index]);
+            if (isPasswordCorrect) {
+                passwordProtect.style.display = 'none';
+                content.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        // Automatically move focus to the next cell
+        passwordCells.forEach((cell, index) => {
+            cell.addEventListener('input', () => {
+                if (cell.value.length === 1 && index < passwordCells.length - 1) {
+                    passwordCells[index + 1].focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
