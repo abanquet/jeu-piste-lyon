@@ -32,6 +32,7 @@
 
             <h2>Objectif</h2>
             <p>Vous devez être la première équipe à résoudre toutes les énigmes et à me rejoindre sur le lieu final!</p>
+            <p>Pour ne pas vous perdre, voici une carte délimitant la zone où se trouvent les différents lieux.</p>
         </section>
         <section id="en" style="display:none;">
             <p>Get ready to explore Lyon! Your mission: solve riddles to find iconic spots in the city and follow the footsteps of historical figures who shaped its history.</p>    
@@ -46,7 +47,40 @@
             <p>Remember the list of historical figures as it will be useful for the final step!</p>
             <h2>Goal</h2>
             <p>You need to be the first team to solve all the riddles and reach me at the final location!</p>
+            <p>To help you navigate, here is a map outlining the area where the different locations are found.</p>
         </section>  
+
+        <section id="map" style="height: 400px; margin-top: 20px;">
+
+            
+        </section>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script>
+            // Initialize the map
+            const map = L.map('map').setView([45.762043, 4.835659], 13.5); // Centered on Lyon
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Load GeoJSON data
+            fetch('data/jeu-piste-lyon.geojson')
+                .then(response => response.json())
+                .then(data => {
+                    // Add GeoJSON layer to the map
+                    L.geoJSON(data, {
+                        style: {
+                            color: 'blue',
+                            weight: 2,
+                            opacity: 0.6
+                        }
+                    }).addTo(map);
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+        </script>
         
     </main>
     <script>
