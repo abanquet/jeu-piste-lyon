@@ -64,9 +64,50 @@
             // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
-                attribution: '© OpenStreetMap contributors'
+                attribution: 'Lyon Express'
             }).addTo(map);
+            // Add a blue marker for the user's location
+            const userMarker = L.marker([0, 0], { 
+                icon: L.icon({
+                    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                }) 
+            });
 
+            // Function to locate the user and add the marker
+            function locateUser() {
+                map.locate({ setView: true, maxZoom: 16 });
+            }
+
+            // Update the marker when the user's location is found
+            map.on('locationfound', (e) => {
+                userMarker.setLatLng(e.latlng).bindPopup('You are here!').openPopup();
+                if (!map.hasLayer(userMarker)) {
+                    userMarker.addTo(map);
+                }
+            });
+
+            // Handle location errors
+            map.on('locationerror', (e) => {
+                alert('Unable to retrieve your location. Please enable location services.');
+            });
+
+            // Add a custom control button to locate the user
+            const locateControl = L.control({ position: 'topright' });
+            locateControl.onAdd = function () {
+                const button = L.DomUtil.create('button', 'locate-button');
+                button.innerHTML = 'Locate Me';
+                button.style.backgroundColor = 'white';
+                button.style.border = '2px solid #ccc';
+                button.style.padding = '5px';
+                button.style.cursor = 'pointer';
+                button.onclick = locateUser;
+                return button;
+            };
+            locateControl.addTo(map);
             // Load GeoJSON data
             fetch('data/jeu-piste-lyon.geojson')
                 .then(response => response.json())
