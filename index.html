@@ -33,6 +33,7 @@
             <h2>Objectif</h2>
             <p>Vous devez être la première équipe à résoudre toutes les énigmes et à me rejoindre sur le lieu final!</p>
             <p>Pour ne pas vous perdre, voici une carte délimitant la zone où se trouvent les différents lieux à découvrir.</p>
+            
         </section>
         <section id="en" style="display:none;">
             <p>Get ready to explore Lyon! Your mission: solve riddles to find iconic spots in the city and follow the footsteps of historical figures who shaped its history.</p>    
@@ -51,10 +52,23 @@
             <p>To help you navigate, here is a map outlining the area where the different locations are found.</p>
         </section>  
 
-        <section id="map" style="height: 400px; margin-top: 20px;">
+        <div id="map" style="height: 400px; margin-top: 20px;"></div>
 
-            
+        <br>
+
+        <section id="fr">
+            <h2>C'est parti!</h2>
+            <p>Commencez l'aventure en cliquant sur le lien suivant : <a href="./riddles/riddle_162791.html">1re énigme - Basilique de Fourvière</a>.</p>
         </section>
+
+        <section id="en" style="display:none;">
+            <h2>Let's go!</h2>
+            <p>Start the adventure by clicking on the following link: <a href="./riddles/riddle_162791.html">1st riddle - Basilica of Fourvière</a>.</p>
+        </section>
+
+        <div style="height: 200px;"></div>
+
+
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script>
@@ -96,7 +110,7 @@
             });
 
             // Add a custom control button to locate the user
-            const locateControl = L.control({ position: 'topright' });
+            const locateControl = L.control({ position: 'topright'});
             locateControl.onAdd = function () {
                 const button = L.DomUtil.create('button', 'locate-button');
                 button.innerHTML = 'Locate Me';
@@ -130,8 +144,11 @@
         langSwitch.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.getElementById('fr').style.display = link.textContent === 'Français' ? 'block' : 'none';
-                document.getElementById('en').style.display = link.textContent === 'English' ? 'block' : 'none';
+                const sections = document.querySelectorAll('section');
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(link.textContent === 'Français' ? 'fr' : 'en').style.display = 'block';
             });
         });
     </script>
